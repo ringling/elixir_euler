@@ -28,14 +28,9 @@ defmodule Palindrome do
 
     b..a
     |>
-    Enum.map(fn(x) ->
-      # if palindrome?(to_string x) do
+    Enum.map(
+      fn(x) ->
         spawn_link fn -> (send me, {self, max_factor_sum(palindrome?(to_string x), x, number_of_factor_digits) }) end
-      # else
-      #   #Wait
-      #   spawn_link fn -> (send me, {self, max_factor_sum(false, x, number_of_factor_digits) }) end
-      #   IO.puts x
-      # end
     end)
     |>
     Enum.map(fn (pid) ->
