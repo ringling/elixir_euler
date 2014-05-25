@@ -1,3 +1,5 @@
+require Integer
+
 defmodule Problems do
 
   # Problem 1
@@ -10,7 +12,7 @@ defmodule Problems do
   def even_fibonaccis_sum(max) do
     Stream.unfold({0, 1}, fn {a, b} -> {a, {b, a + b}} end)
     |> Enum.take_while(fn(x) -> x < max end)
-    |> Enum.filter(fn(x)-> rem(x,2) == 0 end)
+    |> Enum.filter(fn(x)-> Integer.even?(x) end)
     |> Enum.sum
   end
 
